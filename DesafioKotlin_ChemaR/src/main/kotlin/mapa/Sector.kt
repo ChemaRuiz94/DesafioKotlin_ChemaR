@@ -9,16 +9,16 @@ class Sector {
 
     constructor()
 
-    constructor(tributo: Tributo){
-        this.tributos?.add(tributo)
+    constructor(tributos: ArrayList<Tributo>?){
+        this.tributos = tributos
     }
 
     constructor(item: Item){
         this.item = item
     }
 
-    constructor(tributo: Tributo, item: Item){
-        this.tributos?.add(tributo)
+    constructor(tributos: ArrayList<Tributo>, item: Item){
+        this.tributos = tributos
         this.item = item
     }
 
