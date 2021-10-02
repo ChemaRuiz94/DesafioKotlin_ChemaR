@@ -1,4 +1,4 @@
 package item
 
-class Trampa(var n: Int) : Item(nivel = n) {
+class Trampa(private val desc: String) : Item(descripcion = desc) {
 }

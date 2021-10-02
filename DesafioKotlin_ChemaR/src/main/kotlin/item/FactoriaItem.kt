@@ -21,17 +21,14 @@ object FactoriaItem {
 
 
     fun factoriaArma():Arma{
-        var arma : Arma = Arma(generaAleatorio(50,100))
-        return arma
+        return Arma("Arma")
     }
 
     fun factoriaMedicina():Medicina{
-        var medicina : Medicina = Medicina(generaAleatorio(50,100))
-        return medicina
+        return Medicina("Medicina")
     }
 
     fun factoriaTrampa():Trampa{
-        var trampa : Trampa = Trampa(generaAleatorio(50,100))
-        return trampa
+        return Trampa("Trampa")
     }
 }

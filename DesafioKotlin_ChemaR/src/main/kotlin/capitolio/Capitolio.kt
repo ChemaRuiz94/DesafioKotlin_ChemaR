@@ -11,8 +11,6 @@ class Capitolio(var items: ArrayList<Item>)  {
         this.muertos.add(t)
     }
 
-
-
     //elimina por item
     fun delItems(i: Item){
         this.items.remove(i)

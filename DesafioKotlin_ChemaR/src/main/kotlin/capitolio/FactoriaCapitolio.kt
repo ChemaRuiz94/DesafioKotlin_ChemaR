@@ -6,8 +6,7 @@ object FactoriaCapitolio {
 
     fun factoriaCapitolio(): Capitolio {
 
-        val items = FactoriaItem.generarItems()
-
-        return Capitolio(items)
+        return Capitolio(FactoriaItem.generarItems()
+        )
     }
 }

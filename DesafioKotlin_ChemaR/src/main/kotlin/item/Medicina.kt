@@ -1,4 +1,15 @@
 package item
 
-class Medicina(var n: Int) : Item(nivel = n) {
+import generaAleatorio
+
+class Medicina(private val desc: String) : Item(descripcion = desc){
+    private var vida: Int = 0
+
+    init {
+        vida = generaAleatorio(50, 100)
+    }
+
+    fun getFuerza(): Int {
+        return vida
+    }
 }

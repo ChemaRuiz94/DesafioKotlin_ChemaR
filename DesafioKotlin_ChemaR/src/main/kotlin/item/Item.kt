@@ -1,9 +1,8 @@
 package item
 
-open class Item(var nivel: Int) {
+open class Item(private val descripcion: String) {
 
-
-    fun obtenerNivel(): Int {
-        return this.nivel
+    override fun toString(): String {
+        return ("Descripcion: $descripcion")
     }
 }
