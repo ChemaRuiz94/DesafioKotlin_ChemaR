@@ -14,4 +14,14 @@ class Capitolio(var items: ArrayList<Item>)  {
     fun addItems(i: Item){
         this.items.add(i)
     }
+
+    //elimina por posicion
+    fun delItems(i: Int){
+        this.items.removeAt(i)
+    }
+
+    //elimina por item
+    fun delItems(i: Item){
+        this.items.remove(i)
+    }
 }

@@ -9,7 +9,7 @@ object FactoriaMapa {
         for (i in 1..fila){
             sectores?.add(factoriaColumna(columna))
         }
-        var mapa : Mapa = Mapa(sectores)
+        var mapa : Mapa = Mapa(sectores, fila, columna)
         return mapa
     }
 

@@ -6,7 +6,7 @@ object FactoriaCapitolio {
 
     private val maxItem = 100
 
-    fun factoriaCapitoli(): Capitolio {
+    fun factoriaCapitolio(): Capitolio {
 
         var items = FactoriaItem.generarNumeroItems(maxItem)
         var capitolio: Capitolio = Capitolio(items)
