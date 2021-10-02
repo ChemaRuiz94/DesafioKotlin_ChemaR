@@ -1,5 +1,5 @@
 package mapa
 
-class Mapa(var m: ArrayList<Array<Sector?>>) {
+class Mapa(var sectores: ArrayList<ArrayList<Sector>>?) {
 
 }
