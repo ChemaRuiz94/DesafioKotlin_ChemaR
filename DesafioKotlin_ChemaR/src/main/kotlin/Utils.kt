@@ -38,7 +38,11 @@ fun pintarMapa(mapa: Mapa){
         for (j in mapa.sectores!![fil]){
             if(j is Sector){
                 var col : Int = mapa.sectores!![fil].indexOf(j)
-                print("[ $fil / $col ]")
+
+                val item = mapa.sectores!![fil][col].getItem()
+                val tributo = mapa.sectores!![fil][col].getTributos()
+
+                print("[ $fil / $col -> Item: $item / Tributo: $tributo ]")
             }
         }
         println("")

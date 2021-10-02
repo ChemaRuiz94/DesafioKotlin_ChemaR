@@ -5,20 +5,13 @@ import tributos.Tributo
 
 class Capitolio(var items: ArrayList<Item>)  {
 
-    var tributos:  ArrayList<Tributo?>? = null
+    private var muertos:  ArrayList<Tributo> = ArrayList<Tributo>()
 
-    fun addTributo(t: Tributo){
-        this.tributos?.add(t)
+    fun addMuerto(t: Tributo){
+        this.muertos.add(t)
     }
 
-    fun addItems(i: Item){
-        this.items.add(i)
-    }
 
-    //elimina por posicion
-    fun delItems(i: Int){
-        this.items.removeAt(i)
-    }
 
     //elimina por item
     fun delItems(i: Item){

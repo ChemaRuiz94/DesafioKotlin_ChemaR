@@ -2,23 +2,22 @@ package mapa
 
 object FactoriaMapa {
 
-    fun factoriaMapa(fila:Int, columna:Int): Mapa {
+    fun factoriaMapa(): Mapa {
 
         var sectores: ArrayList<ArrayList<Sector>>? = ArrayList()
 
-        for (i in 1..fila){
-            sectores?.add(factoriaColumna(columna))
+        repeat(Constantes.FILAS){
+            sectores?.add(factoriaColumna())
         }
-        var mapa : Mapa = Mapa(sectores, fila, columna)
+        var mapa : Mapa = Mapa(sectores)
         return mapa
     }
 
-    fun factoriaColumna(columna: Int) : ArrayList<Sector>{
-        var col : ArrayList<Sector> = ArrayList(columna)
+    fun factoriaColumna() : ArrayList<Sector>{
+        val col = ArrayList<Sector>()
 
-        for (i in 1..columna){
-            var s: Sector = Sector()
-            col.add(s)
+        repeat(Constantes.COLUMNAS){
+            col.add(Sector())
         }
         return col
     }
