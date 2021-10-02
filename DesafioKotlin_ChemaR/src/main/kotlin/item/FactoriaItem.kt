@@ -4,12 +4,11 @@ import generaAleatorio
 
 object FactoriaItem {
 
-    fun generarNumeroItems(num : Int):ArrayList<Item>{
-        var aleat = generaAleatorio(1,3)
-        var items : ArrayList<Item> = ArrayList(num)
+    fun generarItems():ArrayList<Item>{
+        var items : ArrayList<Item> = ArrayList<Item>()
 
-        for (i in items){
-            when(aleat){
+        repeat(Constantes.ITEMS){
+            when(generaAleatorio(1,3)){
                 1 -> {items.add(factoriaArma())}
 
                 2 -> {items.add(factoriaMedicina())}
@@ -22,17 +21,14 @@ object FactoriaItem {
 
 
     fun factoriaArma():Arma{
-        var arma : Arma = Arma(generaAleatorio(50,100))
-        return arma
+        return Arma("Arma")
     }
 
     fun factoriaMedicina():Medicina{
-        var medicina : Medicina = Medicina(generaAleatorio(50,100))
-        return medicina
+        return Medicina("Medicina")
     }
 
     fun factoriaTrampa():Trampa{
-        var trampa : Trampa = Trampa(generaAleatorio(50,100))
-        return trampa
+        return Trampa("Trampa")
     }
 }

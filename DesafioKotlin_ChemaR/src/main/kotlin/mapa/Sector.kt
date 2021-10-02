@@ -4,29 +4,36 @@ import item.Item
 import tributos.Tributo
 
 class Sector {
-    var tributos: ArrayList<Tributo>? = null
-    var item: Item? = null
-
-    constructor()
-
-    constructor(tributos: ArrayList<Tributo>?){
-        this.tributos = tributos
-    }
-
-    constructor(item: Item){
-        this.item = item
-    }
-
-    constructor(tributos: ArrayList<Tributo>, item: Item){
-        this.tributos = tributos
-        this.item = item
-    }
+    private var ocupado = false
+    private var tributos = ArrayList<Tributo>()
+    private var item: Item? = null
 
     fun addTributo(tributo: Tributo){
-        this.tributos?.add(tributo)
+        tributos.add(tributo)
+        ocupado = true
     }
 
-    fun addItem(item: Item){
-        this.item = item
+    fun addItem(i: Item){
+        item = i
+        ocupado = true
+    }
+
+    fun getItem(): Item?{
+        if (item == null) {
+            return null
+        }
+        return item
+    }
+
+    fun getTributos(): ArrayList<Tributo>{
+        return tributos
+    }
+
+    fun getOcupado(): Boolean{
+        return ocupado
+    }
+
+    override fun toString(): String {
+        return ("Item: $this.item " )
     }
 }
