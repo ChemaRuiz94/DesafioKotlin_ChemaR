@@ -4,13 +4,10 @@ import item.FactoriaItem
 
 object FactoriaCapitolio {
 
-    private val maxItem = 100
+    fun factoriaCapitolio(): Capitolio {
 
-    fun factoriaCapitoli(): Capitolio {
+        val items = FactoriaItem.generarItems()
 
-        var items = FactoriaItem.generarNumeroItems(maxItem)
-        var capitolio: Capitolio = Capitolio(items)
-
-        return capitolio
+        return Capitolio(items)
     }
 }
