@@ -6,9 +6,9 @@ object FactoriaTributos {
     val maxDistritos = 5
     val Parejas = 2
 
-    fun factoriTributo(dist:Int):Tributo{
+    fun factoriTributo(dist: Int, num: Int): Tributo {
 
-        var tributo : Tributo = Tributo(dist,generaAleatorio(50,100),generaAleatorio(50,100))
+        var tributo: Tributo = Tributo(num, dist, generaAleatorio(50, 100), generaAleatorio(50, 100))
         return tributo
     }
 
@@ -16,20 +16,23 @@ object FactoriaTributos {
     Devuelve un arrayList de tributos
     dos tributos por cada distrito
      */
-    fun factoriaTributos():ArrayList<Tributo>{
+    fun factoriaTributos(): ArrayList<Tributo> {
         var tributos = ArrayList<Tributo>()
         var max = 0
         var distrito = 1
+        var num = 0
 
         do {
-            var newTributoH = factoriTributo(distrito)
+            num++
+            var newTributoH = factoriTributo(distrito, num)
             tributos.add(newTributoH)
-            var newTributoM = factoriTributo(distrito)
+            num++
+            var newTributoM = factoriTributo(distrito, num)
             tributos.add(newTributoM)
 
             distrito++
-            max ++
-        }while (max < maxDistritos)
+            max++
+        } while (max < maxDistritos)
 
         return tributos
     }

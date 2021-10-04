@@ -9,7 +9,7 @@ class Medicina(private val desc: String) : Item(descripcion = desc){
         vida = generaAleatorio(50, 100)
     }
 
-    fun getFuerza(): Int {
+    fun getVida(): Int {
         return vida
     }
 }
