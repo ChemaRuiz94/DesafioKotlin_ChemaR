@@ -10,7 +10,7 @@ import tributos.Tributo
 
 fun inicializacionCompleta(capitolio: Capitolio): Mapa {
 
-    val mapa: Mapa = incicializacionMapa()
+    val mapa: Mapa = incicializacionMapa(capitolio)
 
     inicializarItems(mapa, capitolio)
     inicializacionTributos(mapa)
@@ -19,8 +19,8 @@ fun inicializacionCompleta(capitolio: Capitolio): Mapa {
 }
 
 
-fun incicializacionMapa(): Mapa {
-    return FactoriaMapa.factoriaMapa()
+fun incicializacionMapa(capitolio: Capitolio): Mapa {
+    return FactoriaMapa.factoriaMapa(capitolio)
 }
 
 fun inicializacionTributos(mapa: Mapa) {

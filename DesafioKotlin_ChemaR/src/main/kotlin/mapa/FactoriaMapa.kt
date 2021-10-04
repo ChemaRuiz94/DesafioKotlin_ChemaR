@@ -1,16 +1,18 @@
 package mapa
 
+import capitolio.Capitolio
+
 object FactoriaMapa {
 
-    fun factoriaMapa(): Mapa {
+    fun factoriaMapa(capitolio: Capitolio): Mapa {
 
         var sectores: ArrayList<ArrayList<Sector>>? = ArrayList()
 
         repeat(Constantes.FILAS){
             sectores?.add(factoriaColumna())
         }
-        var mapa : Mapa = Mapa(sectores)
-        return mapa
+
+        return Mapa(sectores, capitolio)
     }
 
     fun factoriaColumna() : ArrayList<Sector>{
