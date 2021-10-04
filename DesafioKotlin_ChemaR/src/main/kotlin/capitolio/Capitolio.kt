@@ -5,7 +5,11 @@ import tributos.Tributo
 
 class Capitolio(var items: ArrayList<Item>)  {
 
-    private var muertos:  ArrayList<Tributo> = ArrayList<Tributo>()
+    private var muertos:  ArrayList<Tributo> = ArrayList()
+
+    fun getSizeMuertos(): Int{
+        return muertos.size
+    }
 
     fun addMuerto(t: Tributo){
         this.muertos.add(t)
@@ -14,5 +18,11 @@ class Capitolio(var items: ArrayList<Item>)  {
     //elimina por item
     fun delItems(i: Item){
         this.items.remove(i)
+    }
+
+    fun enviarItems():Item{
+        val it : Item = items[0]
+        items.removeAt(0)
+        return it
     }
 }
