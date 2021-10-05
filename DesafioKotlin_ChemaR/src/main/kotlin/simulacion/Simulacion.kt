@@ -24,6 +24,8 @@ fun simulacion(mapa: Mapa) {
         println("\n\n")
         Thread.sleep(1000)
         cont++
+        println("TIEMPO SIMULACION: $cont SEGUNDOS")
+
         if(cont % 2 == 0){
             simularMovimiento(mapa)
             //pintarMapaDetalle(mapa)
@@ -35,12 +37,11 @@ fun simulacion(mapa: Mapa) {
             }
             pintarResultado(mapa)
         }
-        println("TIEMPO SIMULACION: $cont SEGUNDOS")
 
         mapa.comprobarTributosVivos()
     } while (mapa.getTributosVivos().size > 1)
-    println("FIN DE LA SIMULACION")
-    pintarResultado(mapa)
+
+    pintarResultadoFinal(mapa)
 }
 
 
@@ -66,10 +67,20 @@ fun pintarResultado(mapa: Mapa){
         println("TODOS HAN MUERTO POR TRAMPAS")
     }
 
+
+}
+
+fun pintarResultadoFinal(mapa: Mapa){
+    println("------FIN DE LOS JUEGOS------")
+    pintarResultado(mapa)
+    println("ESTADO DEL MAPA")
+    pintarMapaDetalle(mapa)
+
     println("MUERTOS RECOGIDOS POR EL CAPITOLIO ->")
     mapa.capitolio.getMuertos().forEach { tributo ->
         println("\t$tributo")
     }
+
 }
 
 

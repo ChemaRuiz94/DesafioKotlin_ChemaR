@@ -109,6 +109,6 @@ class Tributo(var numeroTributo: Int, var distrito: Int) {
     }
 
     override fun toString(): String {
-        return ("Numero tributo: $numeroTributo, Distrito: $distrito, Vida: $vida, Fuerza: $fuerza, FILA : $fila COLUMNA: $columna")
+        return ("Num Tributo: $numeroTributo, Distrito: $distrito, Vida: $vida, Fuerza: $fuerza")
     }
 }
