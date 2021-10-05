@@ -11,6 +11,10 @@ class Capitolio(var items: ArrayList<Item>)  {
         return muertos.size
     }
 
+    fun getMuertos(): ArrayList<Tributo>{
+        return muertos
+    }
+
     fun addMuerto(t: Tributo){
         this.muertos.add(t)
     }

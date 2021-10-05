@@ -8,7 +8,7 @@ object FactoriaTributos {
 
     fun factoriTributo(dist: Int, num: Int): Tributo {
 
-        var tributo: Tributo = Tributo(num, dist, generaAleatorio(50, 100), generaAleatorio(50, 100))
+        var tributo: Tributo = Tributo(num, dist)
         return tributo
     }
 

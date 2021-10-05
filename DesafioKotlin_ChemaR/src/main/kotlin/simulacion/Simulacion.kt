@@ -4,45 +4,47 @@ import mapa.Mapa
 import mapa.Sector
 import tributos.Tributo
 import generaAleatorio
-import pintarMapa
+import pintarMapaDetalle
+import pintarMapaInicializacion
+import pintarMapaVacio
+
 
 fun simulacion(mapa: Mapa) {
+    var cont = 0
+
+    println("BIENVENIDOS A LOS JUEGOS DEL HAMBRE")
+    println("ESTE SERA EL MAPA DONDE JUGARAN NUESTROS TRIBUTOS")
+    pintarMapaVacio(mapa)
+    println("Y ESTE ES EL MAPA UNA VEZ INICIALIZADOS LOS ITEMS Y LOS TRIBUTOS")
+    pintarMapaInicializacion(mapa)
+    //pintarMapaDetalle(mapa)
+
     mapa.comprobarTributosVivos()
     do {
-        //cada 2 segundos se mueven los tributos a otra sector
-        //Thread.sleep(2000)
-        simulacionMover(mapa)
-
-        //Thread.sleep(5000)
-
-        //if (mapa.capitolio.items.size > 0) {
-        repeat(4) {
-            mapa.rellenarItems()
-        }
-        //}
         println("\n\n")
-        pintarMapa(mapa)
-        println("MUERTOS " + mapa.capitolio.getSizeMuertos())
+        Thread.sleep(1000)
+        cont++
+        if(cont % 2 == 0){
+            simularMovimiento(mapa)
+            //pintarMapaDetalle(mapa)
+        }
+
+        if(cont % 5 == 0){
+            repeat(4) {
+                mapa.rellenarItems()
+            }
+            pintarResultado(mapa)
+        }
+        println("TIEMPO SIMULACION: $cont SEGUNDOS")
+
         mapa.comprobarTributosVivos()
     } while (mapa.getTributosVivos().size > 1)
-
-    println("VIVOS " + mapa.getTributosVivos().size)
-    mapa.getTributosVivos().forEach { tributo ->
-        println(tributo)
-    }
-    println("FIN SIMULACION")
+    println("FIN DE LA SIMULACION")
+    pintarResultado(mapa)
 }
 
-fun simulacionMover(mapa: Mapa) {
-
-    simularMovimiento(mapa)
-    pintarMapa(mapa)
-
-}
 
 fun simularMovimiento(mapa: Mapa) {
-
-
     val a = mapa.getTributosVivos()
 
     a.forEach { tributo ->
@@ -51,15 +53,23 @@ fun simularMovimiento(mapa: Mapa) {
     }
 }
 
-/*
-fun simularMovimiento2(mapa: Mapa) {
+fun pintarResultado(mapa: Mapa){
+    println("")
+    println("RESULTADO DE LOS JUEGOS -> ")
+    println("VIVOS :" + mapa.getTributosVivos().size)
+    println("MUERTOS :" + mapa.capitolio.getSizeMuertos())
+    if(mapa.getTributosVivos().size > -1){
+        mapa.getTributosVivos().forEach { tributo ->
+            println("SUPERVIVIENTE -> $tributo")
+        }
+    }else{
+        println("TODOS HAN MUERTO POR TRAMPAS")
+    }
 
-    mapa.sectores!!.filter { f ->
-        if (f.getTributos() != null && f.getTributos().getVida() > 0) {
-            mapa.comprobarSector(tributo)
-        } }
-
-
- */
+    println("MUERTOS RECOGIDOS POR EL CAPITOLIO ->")
+    mapa.capitolio.getMuertos().forEach { tributo ->
+        println("\t$tributo")
+    }
+}
 
 

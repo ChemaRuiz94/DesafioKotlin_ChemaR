@@ -1,26 +1,24 @@
 package tributos
 
+import generaAleatorio
 import item.Arma
 import item.Item
 import item.Medicina
 import item.Trampa
 
-class Tributo(var numeroTributo: Int, var distrito: Int, var vida: Int, var fuerza: Int) {
+class Tributo(var numeroTributo: Int, var distrito: Int) {
 
+    var vida: Int = 0
+    var fuerza: Int = 0
     private var fila: Int = 0
     private var columna: Int = 0
 
-    //cambiar en el init la fuerza y la vida a random
 
-    /*
     init {
-        numeroTributo++
+        this.vida = generaAleatorio(50, 100)
+        this.fuerza = generaAleatorio(50, 100)
     }
 
-    companion object{
-        var numeroTributo = 0
-    }
-     */
 
     private fun aumentarVida(aumento: Int) {
         this.vida = this.vida + aumento
@@ -66,8 +64,8 @@ class Tributo(var numeroTributo: Int, var distrito: Int, var vida: Int, var fuer
 
     }
 
-    fun pelear(tributo: Tributo){
-        when(compararValores(fuerza,tributo.fuerza)){
+    fun pelear(tributo: Tributo) {
+        when (compararValores(fuerza, tributo.fuerza)) {
             0 ->
                 tributo.vida = 0
             1 ->
@@ -78,8 +76,8 @@ class Tributo(var numeroTributo: Int, var distrito: Int, var vida: Int, var fuer
         }
     }
 
-    private fun compararVida(tributo: Tributo){
-        when(compararValores(vida,tributo.vida)){
+    private fun compararVida(tributo: Tributo) {
+        when (compararValores(vida, tributo.vida)) {
             0 ->
                 tributo.vida = 0
             1 ->
@@ -89,12 +87,12 @@ class Tributo(var numeroTributo: Int, var distrito: Int, var vida: Int, var fuer
         }
     }
 
-    private fun alAzar(tributo: Tributo){
+    private fun alAzar(tributo: Tributo) {
         val rand = (1 until 3).random()
 
-        if (rand == 1){
+        if (rand == 1) {
             tributo.vida = 0
-        }else{
+        } else {
             vida = 0
         }
     }

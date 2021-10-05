@@ -62,21 +62,7 @@ class Mapa(var sectores: ArrayList<ArrayList<Sector>>?, var capitolio: Capitolio
 
 
     }
-    /*
 
-    fun rellenarItems() {
-            val item = capitolio.enviarItems()
-            var correcto = false
-            do {
-                val sector = obtenerSector()
-                if (!sector.getOcupado() && !sector.getOcupadoItems()) {
-                    sector.addItem(item)
-                    correcto = true
-                }
-            } while (!correcto)
-
-    }
-    */
 
     fun comprobarTributosVivos() {
 
@@ -96,9 +82,6 @@ class Mapa(var sectores: ArrayList<ArrayList<Sector>>?, var capitolio: Capitolio
         return this.tributosVivos
     }
 
-    fun setTributosVivos(t: ArrayList<Tributo>) {
-        this.tributosVivos = t
-    }
 
     fun comprobarSector(tributo: Tributo) {
 
@@ -106,6 +89,7 @@ class Mapa(var sectores: ArrayList<ArrayList<Sector>>?, var capitolio: Capitolio
         val columnaOld = tributo.getColumna()
 
         generarNuevaPosi(tributo)
+        //println("EL TRIBUTO ${tributo.numeroTributo} SE HA DESPLAZADO A UNA CASILLA ADYACENTE")
 
         val filaNew = tributo.getFila()
         val columnaNew = tributo.getColumna()
@@ -117,11 +101,13 @@ class Mapa(var sectores: ArrayList<ArrayList<Sector>>?, var capitolio: Capitolio
             tributo.pelear(tributoIn)
             //el tributo que entra gana
             if (tributo.vida > 0) {
+                println("EL TRIBUTO -> ${tributo.numeroTributo} HA MATADO AL TRIBUTO -> ${tributoIn.numeroTributo}")
                 accederSector(filaOld, columnaOld, tributo, newSector)
                 capitolio.addMuerto(tributoIn)
 
                 //el tributo que entra muere
             } else {
+                println("EL TRIBUTO NUMERO-> ${tributoIn.numeroTributo} HA MATADO AL TRIBUTO NUMERO-> ${tributo.numeroTributo}")
                 capitolio.addMuerto(tributo)
                 sectores!![filaOld][columnaOld].delTributo()
             }
@@ -131,7 +117,7 @@ class Mapa(var sectores: ArrayList<ArrayList<Sector>>?, var capitolio: Capitolio
             tributo.actuarItems(item!!)
 
             if(tributo.vida==0){
-                println("TRAMPA PARA EL TRIBUTO -> $tributo")
+                println("TRAMPA PARA EL TRIBUTO NUMERO ${tributo.numeroTributo}")
                 capitolio.addMuerto(tributo)
                 sectores!![filaOld][columnaOld].delTributo()
             }else{
@@ -149,9 +135,7 @@ class Mapa(var sectores: ArrayList<ArrayList<Sector>>?, var capitolio: Capitolio
         newSector.addTributo(tributo)
     }
 
-    fun accederSectorAddTributo(fila: Int, columna: Int, tributo: Tributo) {
-        this.sectores!![fila][columna].addTributo(tributo)
-    }
+
 
     fun comprobarSectorVacioItems(): Boolean {
         var correcto: Boolean
