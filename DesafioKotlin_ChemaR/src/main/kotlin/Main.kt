@@ -7,11 +7,9 @@ import simulacion.simulacion
 fun main() {
 
     var capitolio: Capitolio = FactoriaCapitolio.factoriaCapitolio()
-
     var mapa: Mapa = inicializacionCompleta(capitolio)
 
-    pintarMapa(mapa)
     simulacion(mapa)
 
-    println("fin")
+    println("FIN MAIN")
 }

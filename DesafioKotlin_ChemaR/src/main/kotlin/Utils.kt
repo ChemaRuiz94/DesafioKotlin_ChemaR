@@ -2,25 +2,6 @@ import mapa.Mapa
 import mapa.Sector
 import tributos.Tributo
 
-fun pedirEnteroUsuario(mensaje: String): Int {
-    var num: Int = 0
-    var correcto = false
-
-    while (!correcto) {
-        try {
-            println(mensaje)
-            num = readLine().toString().toInt()
-            correcto = true
-            if (num < 1) {
-                correcto = false
-            }
-        } catch (e: Exception) {
-            println("ERROR -> Introduce un numero entero")
-        }
-    }
-    return num
-}
-
 
 fun generaAleatorio(minimo: Int, maximo: Int): Int {
     return Math.floor(Math.random() * (maximo - minimo + 1) + minimo).toInt()
@@ -30,21 +11,69 @@ fun generaAleatorio(minimo: Int, maximo: Int): Int {
 /*
 Pequeña funcion para pintar el mapa
  */
-fun pintarMapa(mapa: Mapa){
+fun pintarMapaVacio(mapa: Mapa) {
     //primer for recorre filas
-    for (i in mapa.sectores!!){
-        var fil : Int = mapa.sectores!!.indexOf(i)
+    for (i in mapa.sectores!!) {
+        var fil: Int = mapa.sectores!!.indexOf(i)
 
         //segundo for recorre columnas
-        for (j in mapa.sectores!![fil]){
-            if(j is Sector){
-                var col : Int = mapa.sectores!![fil].indexOf(j)
+        for (j in mapa.sectores!![fil]) {
+            if (j is Sector) {
+                var col: Int = mapa.sectores!![fil].indexOf(j)
 
                 val item = mapa.sectores!![fil][col].getItem()
                 val tributo = mapa.sectores!![fil][col].getTributos()
 
-               print("[ $fil / $col -> Item: $item / Tributo: $tributo ]")
-                //print("[ $fil / $col ]")
+                print("[ $fil / $col ]")
+            }
+        }
+        println("")
+    }
+}
+
+fun pintarMapaInicializacion(mapa: Mapa) {
+    //primer for recorre filas
+    for (i in mapa.sectores!!) {
+        var fil: Int = mapa.sectores!!.indexOf(i)
+
+        //segundo for recorre columnas
+        for (j in mapa.sectores!![fil]) {
+            if (j is Sector) {
+                var col: Int = mapa.sectores!![fil].indexOf(j)
+                var item = mapa.sectores!![fil][col].getItem()
+                var tributo = mapa.sectores!![fil][col].getTributos()
+
+                if (mapa.sectores!![fil][col].getItem() != null && mapa.sectores!![fil][col].getTributos() != null) {
+                    print("[ $fil / $col -> item: SI / tributo: SI ]")
+                } else if (mapa.sectores!![fil][col].getItem() == null && mapa.sectores!![fil][col].getTributos() != null) {
+                    print("[ $fil / $col -> item: NO / tributo:  SI ]")
+                } else if (mapa.sectores!![fil][col].getItem() != null && mapa.sectores!![fil][col].getTributos() == null) {
+                    print("[ $fil / $col -> item: SI / tributo: NO ]")
+                } else {
+                    print("[ $fil / $col -> item: NO / tributo: NO ]")
+                }
+
+
+            }
+        }
+        println("")
+    }
+}
+
+fun pintarMapaDetalle(mapa: Mapa) {
+    //primer for recorre filas
+    for (i in mapa.sectores!!) {
+        var fil: Int = mapa.sectores!!.indexOf(i)
+
+        //segundo for recorre columnas
+        for (j in mapa.sectores!![fil]) {
+            if (j is Sector) {
+                var col: Int = mapa.sectores!![fil].indexOf(j)
+
+                val item = mapa.sectores!![fil][col].getItem()
+                val tributo = mapa.sectores!![fil][col].getTributos()
+
+                print("[ $fil / $col -> item: $item / tributo: $tributo]")
             }
         }
         println("")
@@ -52,7 +81,7 @@ fun pintarMapa(mapa: Mapa){
 }
 
 
-fun generarNuevaPosi(tributo: Tributo){
+fun generarNuevaPosi(tributo: Tributo) {
     do {
         var correcto = false
 
@@ -60,14 +89,12 @@ fun generarNuevaPosi(tributo: Tributo){
             1 -> { //-> +1/0
                 if (tributo.getFila() != 4) {
                     tributo.setFila(tributo.getFila() + 1) // cambiamos el atributo privado del objeto tributo
-                    //tributosNoMovidos.remove(tributo) //lo eliminamos de la lista de no movidos
                     correcto = true //si le encuentra una posicion valida cambia a correcto
                 }
             }
             2 -> { //-> -1/0
                 if (tributo.getFila() != 0) {
                     tributo.setFila(tributo.getFila() - 1)
-                    //tributosNoMovidos.remove(tributo)
                     correcto = true
                 }
 
@@ -76,7 +103,6 @@ fun generarNuevaPosi(tributo: Tributo){
             3 -> { //-> 0/+1
                 if (tributo.getColumna() != 4) {
                     tributo.setColumna(tributo.getColumna() + 1)
-                    //tributosNoMovidos.remove(tributo)
                     correcto = true
                 }
 
@@ -85,7 +111,6 @@ fun generarNuevaPosi(tributo: Tributo){
             4 -> { //-> 0/-1
                 if (tributo.getColumna() != 0) {
                     tributo.setColumna(tributo.getColumna() - 1)
-                    //tributosNoMovidos.remove(tributo)
                     correcto = true
                 }
             }
@@ -93,7 +118,6 @@ fun generarNuevaPosi(tributo: Tributo){
                 if (tributo.getColumna() != 4 && tributo.getFila() != 4) {
                     tributo.setFila(tributo.getFila() + 1)
                     tributo.setColumna(tributo.getColumna() + 1)
-                    //tributosNoMovidos.remove(tributo)
                     correcto = true
                 }
             }
@@ -101,7 +125,6 @@ fun generarNuevaPosi(tributo: Tributo){
                 if (tributo.getColumna() != 0 && tributo.getFila() != 0) {
                     tributo.setFila(tributo.getFila() - 1)
                     tributo.setColumna(tributo.getColumna() - 1)
-                    //tributosNoMovidos.remove(tributo)
                     correcto = true
                 }
             }
@@ -110,7 +133,6 @@ fun generarNuevaPosi(tributo: Tributo){
                 if (tributo.getFila() != 4 && tributo.getColumna() != 0) {
                     tributo.setFila(tributo.getFila() + 1)
                     tributo.setColumna(tributo.getColumna() - 1)
-                    //tributosNoMovidos.remove(tributo)
                     correcto = true
                 }
             }
@@ -118,12 +140,11 @@ fun generarNuevaPosi(tributo: Tributo){
                 if (tributo.getFila() != 0 && tributo.getColumna() != 4) {
                     tributo.setFila(tributo.getFila() - 1)
                     tributo.setColumna(tributo.getColumna() + 1)
-                    //tributosNoMovidos.remove(tributo)
                     correcto = true
                 }
             }
         }
-        //sale del bucle si le ha encontrado una posicion valida, y pasa al siguiente en la lista
+        //sale del bucle si le ha encontrado una posicion valida
     } while (!correcto)
 }
 
